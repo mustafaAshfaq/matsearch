@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">Ng Books
+  <button mat-icon-button (click)="sidenav.toggle()" class="menu-toggle"><i class="material-icons">menu</i></button>
+</mat-toolbar>
+<mat-sidenav-container class="ngb-sidebar">
+  <mat-sidenav #sidenav class="ngb-sidenav">
+    <mat-list>
+      <mat-list-item [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+true}">Search Books</mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <div class="ngb-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
