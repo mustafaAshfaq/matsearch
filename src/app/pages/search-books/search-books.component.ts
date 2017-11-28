@@ -16,7 +16,9 @@ export class SearchBooksComponent implements OnInit {
   $searchTextChanged: Subject<string> = new Subject<string>();
   books: Book[] = [];
   searching = false;
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService) {
+      console.log('app component loading');
+  }
 
   ngOnInit() {
     this.initSearchTextHandler();
