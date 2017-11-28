@@ -10,7 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico"
-      ],
+  ,Web.config    ],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
