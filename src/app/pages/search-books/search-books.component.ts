@@ -47,11 +47,19 @@ export class SearchBooksComponent implements OnInit {
     this.searching = true;
     if (queryText) {
       this.bookService.searchBooks(queryText)
-        .subscribe((response) => {
-          console.log(response);
-          this.searching = false;
-          this.books = response.items;
-        })
+          .subscribe(
+          (data) => { this.books = data.items; this.searching = false; },
+          error => {
+          this.books = [];
+              this.searchText = '';
+              this.searching = false;
+          }
+          //(response) => {
+          //console.log(response);
+          //this.searching = false;
+          //this.books = response.items;
+        //}
+      )
     }else {
       setTimeout(() => {
         this.books = [];

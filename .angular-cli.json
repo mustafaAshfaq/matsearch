@@ -10,7 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "Web.config"    
+        "Web.config"
 
       ],
       "index": "index.html",
@@ -21,10 +21,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "ngb",
       "serviceWorker": true,
-      "styles": [
-        "styles.scss"
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
       ],
-      "scripts": [],
+      "styles": [
+        "styles.scss",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+      ],
+
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

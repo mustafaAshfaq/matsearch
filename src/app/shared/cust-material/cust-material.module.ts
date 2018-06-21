@@ -15,7 +15,8 @@ import {
   MatChipsModule,
   MatMenuModule,
   MatSelectModule,
-  MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
 } from '@angular/material';
 
 @NgModule({
@@ -51,7 +52,8 @@ import {
     MatChipsModule,
     MatMenuModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+      MatProgressSpinnerModule,
+      MatDialogModule
   ]
 })
 

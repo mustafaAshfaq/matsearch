@@ -1,6 +1,31 @@
-<mat-toolbar color="primary">Ng Books
-  <button mat-icon-button (click)="sidenav.toggle()" class="menu-toggle"><i class="material-icons">menu</i></button>
+<mat-toolbar color="primary">
+  <button *ngIf="isLoggedIn" mat-icon-button (click)="sidenav.toggle()" class="menu-toggle"><i class="material-icons">menu</i></button>
+    <span class="fill_space"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_horiz</mat-icon>
+    </button> 
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openModal()">
+            <mat-icon primary>account_box</mat-icon>
+            <span>{{loggedText}}</span>
+        </button>
+        <button *ngIf="isLoggedIn" mat-menu-item>
+            <mat-icon>account_circle</mat-icon>
+            <span>{{(loggedUser)?.get('name')}}</span>
+        </button>
+    </mat-menu>
+    <!--<nav class="navbar navbar-expand-lg navbar-expand-md navbar-light bg-faded float-right ml-2">
+        <button class="navbar-toggler navbar-toggler-right" data-target="#menu" data-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="menu" class="navbar-collapse collapse mr-auto mt-lg-0 mt-2">
+            <ul class="navbar-nav justify-content-end" role="navigation">
+                <li class="nav-item"><a mat-icon class="nav-link" href="#">Login</a></li>
+            </ul>
+        </div>
+    </nav>-->
 </mat-toolbar>
+
 <mat-sidenav-container class="ngb-sidebar">
   <mat-sidenav #sidenav class="ngb-sidenav">
     <mat-list>
