@@ -13,7 +13,7 @@ interface APIResponse {
 export class AuthService {
     private url: string = ''
     constructor(private http: HttpClient) {
-        this.url ='http://localhost:3000/'; //'https://birotyapp-auth.azurewebsites.net/'
+        this.url ='https://birotyapp-auth.azurewebsites.net/';
     }
     public authenticateUser(authenticate: Authenticate)//: Observable<User>
     {
