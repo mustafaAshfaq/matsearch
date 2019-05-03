@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-    title = 'ngb';
+    title = 'Search Books';
     isLoggedIn=false ;//Observable<boolean>
     loggedUser: any;//Observable<any>
     get loggedText() {

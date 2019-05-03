@@ -13,17 +13,17 @@ import { Login, Logout, Register } from '../../store/actions/auth/auth.action';
     templateUrl:'login-modal.component.html'
 })
 export class LoginModal implements OnInit,  OnDestroy {
-    private form: FormGroup = this.fb.group({
+    public form: FormGroup = this.fb.group({
         username: ['admin1@test.com', Validators.required],
         password: ['12345678', Validators.required],
         name:['']
     });
     private pendingSubsciption=this.store.select(selectLoginPending).subscribe(p => this._pending = p);
-    private _pending: boolean = false;
-    private error$: Observable<any> = this.store.select(selectLoginError);
+    public _pending: boolean = false;
+    public error$: Observable<any> = this.store.select(selectLoginError);
     private loginSubscription: Subscription;
     private loggeduserSubscription: Subscription;
-    private isSignup: boolean = false;
+    public isSignup: boolean = false;
     loggedIn: boolean = false;
     loggedUser: any = null;
     ngOnInit() {
@@ -44,7 +44,7 @@ export class LoginModal implements OnInit,  OnDestroy {
         , @Inject(MAT_DIALOG_DATA) public data: any) {
        
     }
-    private submit() {
+    public submit() {
         if (this.isSignup)
             this.store.dispatch(new Register(this.form.value));
         else
@@ -63,7 +63,7 @@ export class LoginModal implements OnInit,  OnDestroy {
                     this.close();
             });
     }
-    private close() {
+    public close() {
         //if (isCancel || (this.loggedIn === true && this.loggedUser))
         this.dialogRef.close({
             loggedIn: this.loggedIn,
