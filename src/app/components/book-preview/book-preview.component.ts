@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Book } from 'app/models/book.model';
+import { Book } from '../../models/book.model';
 
 @Component({
-  moduleId: module.id,
   selector: 'ngb-book-preview',
   templateUrl: 'book-preview.component.html',
   styleUrls: ['book-preview.component.scss']

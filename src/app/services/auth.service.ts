@@ -1,8 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/Observable/of';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { Observable ,of,throwError} from 'rxjs';
 import { filter, mergeMap, catchError,tap } from 'rxjs/operators';
 import { User, Authenticate } from '../models/auth.model';
 
@@ -77,14 +75,14 @@ export class AuthService {
             console.log('error in connection');
         else
             console.log(`Server Error ${error.status}, error details:${error.error}`);
-        return new ErrorObservable(`Error in fetching data, please try again`);
+        return throwError(`Error in fetching data, please try again`);
     }
     public authorizeUser(): Observable<boolean> {
         if ((['undefined', null].indexOf(localStorage.getItem('user')) === -1)) {
             let user = JSON.parse(this.getUserDetail(localStorage.getItem('user')));
-            return Observable.of(user && user.exp > Date.now)
+            return of(user && user.exp > Date.now)
         }
-        return Observable.of(false);
+        return of(false);
     }
     public getUsers(uname: string)//: Observable<User[]>
     {
@@ -100,10 +98,10 @@ export class AuthService {
     }
     public getUser(): Observable<User> {
         const user = JSON.parse (this.getUserDetail(localStorage.getItem('user')));//JSON.parse(localStorage.getItem('user'));
-        return Observable.of(user as User);
+        return of(user as User);
     }
     public logout(): Observable<boolean> {
         localStorage.removeItem('user');
-        return Observable.of(true);
+        return of(true);
     }
 }

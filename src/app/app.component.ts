@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { LoginModal } from './components/Auth/login-modal.component';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 @Component({
-  moduleId: module.id,
   selector: 'ngb-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']

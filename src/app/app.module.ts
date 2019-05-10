@@ -19,7 +19,6 @@ import { SearchBooksComponent } from './pages/search-books/search-books.componen
 import { BookPreviewComponent } from './components/book-preview/book-preview.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BookDetailPageComponent } from './pages/book-detail-page/book-detail-page.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
@@ -27,14 +26,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { LoginModal } from './components/Auth/login-modal.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { AuthService } from './services/auth.service';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/exhaustMap';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/finally';
-import 'rxjs/add/operator/retry';
+import {catchError,exhaustMap,map,filter,switchMap,retry,finalize} from 'rxjs/operators';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,15 +42,16 @@ import 'rxjs/add/operator/retry';
     imports: [
         BrowserAnimationsModule,
         BrowserModule, CommonModule,
-        StoreModule.forRoot(reducer, { metaReducers }),
+        StoreModule.forRoot(reducer,{ metaReducers }),
         StoreRouterConnectingModule, CdkTableModule,
     RouterModule,
     AppRoutes,
         FormsModule, ReactiveFormsModule,
-        HttpModule, HttpClientModule,
+        HttpClientModule, HttpClientModule,
     // BooksModule,
         CustMaterialModule,
-        EffectsModule.forRoot([AuthEffects])
+        EffectsModule.forRoot([AuthEffects]),
+        StoreRouterConnectingModule.forRoot()
   ],
   providers: [{
         provide: LocationStrategy,

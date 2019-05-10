@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import { Book } from 'app/models/book.model';
+import { Subject } from 'rxjs';
+import {debounceTime,distinctUntilChanged} from 'rxjs/operators'
+import { Book } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'ngb-search-books',
   templateUrl: 'search-books.component.html',
   styleUrls: ['search-books.component.scss']
@@ -25,10 +23,10 @@ export class SearchBooksComponent implements OnInit {
   }
 
   initSearchTextHandler() {
-    this.$searchTextChanged
-      .debounceTime(300) // wait 300ms after the last event before emitting last event
-      .distinctUntilChanged() // only emit if value is different from previous value
-      .subscribe(searchTextVal => {
+    this.$searchTextChanged.pipe(
+      debounceTime(300)// wait 300ms after the last event before emitting last event
+      ,distinctUntilChanged()// only emit if value is different from previous value
+      ).subscribe(searchTextVal => {
         this.searchBooks(this.searchText);
       });
     this.$searchTextChanged.next(this.searchText);

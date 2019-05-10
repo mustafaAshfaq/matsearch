@@ -1,7 +1,6 @@
 ﻿import { Component, Inject,OnInit,OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable,Subscription} from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { selectLoginPending, selectLoggedIn, selectLoginError, selectLoggedInUser } from '../../store/reducers/auth';
@@ -42,15 +41,7 @@ export class LoginModal implements OnInit,  OnDestroy {
         private fb: FormBuilder
        , public dialogRef: MatDialogRef<LoginModal>
         , @Inject(MAT_DIALOG_DATA) public data: any) {
-       
-    }
-    public submit() {
-        if (this.isSignup)
-            this.store.dispatch(new Register(this.form.value));
-        else
-            this.store.dispatch(new Login(this.form.value));
-        //this.close();
-        this.loginSubscription = this.store.select(selectLoggedIn)
+            this.loginSubscription = this.store.select(selectLoggedIn)
             .subscribe(logged => {
                 this.loggedIn = logged
                 console.log('login:is logged' + logged);
@@ -62,6 +53,15 @@ export class LoginModal implements OnInit,  OnDestroy {
                 if (login)
                     this.close();
             });
+       
+    }
+    public submit() {
+        if (this.isSignup)
+            this.store.dispatch(new Register(this.form.value));
+        else
+            this.store.dispatch(new Login(this.form.value));
+        //this.close();
+        
     }
     public close() {
         //if (isCancel || (this.loggedIn === true && this.loggedUser))

@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Book } from 'app/models/book.model';
+import { Book } from '../../models/book.model';
 import { Router } from '@angular/router';
 
 @Component({
-  moduleId: module.id,
   selector: 'ngb-book-details',
   templateUrl: 'book-details.component.html',
   styleUrls: ['book-details.component.scss']

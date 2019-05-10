@@ -1,7 +1,7 @@
 import * as auth from '../../actions/auth/auth.action';
 import { LoginState as State, LoginStateRecord } from '../../states/auth/login.state';
 export { State as LoginState };
-export const initialState: State = new LoginStateRecord() as State;
+export const initialState: State = new LoginStateRecord() as any;
 
 export function reducer(state = initialState, action: auth.Actions): State {
   switch (action.type) {
@@ -21,7 +21,7 @@ export function reducer(state = initialState, action: auth.Actions): State {
 
     case auth.LOGIN_FAILURE: {
       return state.merge({
-        error: action.payload,
+        error: action.payload.error,
         pending: false,
       }) as State;
     }
