@@ -1,9 +1,9 @@
 <mat-card>
   <mat-card-title>Search Books</mat-card-title>
   <mat-card-content>
-    <mat-input-container>
+    <mat-form-field>
       <input matInput (ngModelChange)="onSearchTextChange(searchText)" [(ngModel)]="searchText" placeholder="Search books" [value]="searchText">
-    </mat-input-container>
+    </mat-form-field>
     <mat-spinner  [class.show]="searching" mode="determinate"></mat-spinner>
   </mat-card-content>
 </mat-card>

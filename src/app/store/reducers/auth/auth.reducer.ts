@@ -2,8 +2,10 @@
 import * as authActions from '../../actions/auth/auth.action';
 import { ActionReducer } from '@ngrx/store';
 export { State as AuthState };
-const initialRecord = new defaultAuthState() as State;
-export const reducer: ActionReducer<State> = (state = initialRecord, action: authActions.Actions) => {
+const initialRecord = new defaultAuthState() as any ;
+//export const reducer: ActionReducer<State> = (state = initialRecord, action: authActions.Actions)=>
+export function reducer(state:State= initialRecord, action: authActions.Actions):State 
+{
     console.log('from auth reducer'+ action.type);
     switch (action.type) {
         case authActions.LOGIN_SUCCESS:

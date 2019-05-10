@@ -1,0 +1,8 @@
+{
+    "/users":
+    {
+        "target":"https://birotyapp-auth.azurewebsites.net",
+        "secure":false,
+        "changeOrigin":true
+    }
+}

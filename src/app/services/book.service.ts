@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 //import { Http } from '@angular/http';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { Observable,throwError } from 'rxjs';
 import { map, retry, tap, catchError } from 'rxjs/operators';
 //import 'rxjs/add/operator/map';
 
@@ -33,6 +32,6 @@ export class BookService {
             console.log('error in connection');
         else
             console.log(`Server Error ${error.status}, error details:${error.error}`);
-        return new ErrorObservable(`Error in fetching data, please try again`);
+        return throwError(`Error in fetching data, please try again`);
     }
 }

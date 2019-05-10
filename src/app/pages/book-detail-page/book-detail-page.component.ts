@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../../services/book.service';
-import { Book } from 'app/models/book.model';
+import { Book } from '../../models/book.model';
 
 @Component({
-  moduleId: module.id,
   selector: 'ngb-book-detail-page',
   templateUrl: 'book-detail-page.component.html',
   styleUrls: ['book-detail-page.component.scss']

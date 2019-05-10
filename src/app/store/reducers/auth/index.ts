@@ -1,23 +1,30 @@
-﻿import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
-import * as authReducer from './auth.reducer';
-import * as loginReducer from './login.reducer';
-export interface AuthState {
-    fromAuth: authReducer.AuthState,
-    login: loginReducer.LoginState
+﻿import { ActionReducerMap, createFeatureSelector, createSelector,combineReducers, ActionReducer } from '@ngrx/store';
+import {compose} from '@ngrx/core/compose';
+import {reducer as authReducer,AuthState ,getLoggedIn,getLoggedInUser} from './auth.reducer';
+import {reducer as loginReducer,LoginState,getError,getPending} from './login.reducer';
+export {authReducer as authReducer};
+export {loginReducer as loginReducer}
+export interface State {
+    fromAuth: AuthState,
+    login: LoginState
 }
 
-//export interface State {
-//    auth: AuthState
-//}
-export const Authreducer: ActionReducerMap<AuthState> = {
-    fromAuth: authReducer.reducer,
-    login: loginReducer.reducer
-}
 
-export const selectAuth = createFeatureSelector<authReducer.AuthState>('fromAuth');
+//   const reducer= compose(combineReducers)({fromAuth:authReducer,login:loginReducer});
 
-export const selectLoggedIn = createSelector(selectAuth, authReducer.getLoggedIn);
-export const selectLoggedInUser = createSelector(selectAuth, authReducer.getLoggedInUser);
-export const selectLogin = createFeatureSelector<loginReducer.LoginState>('login');
-export const selectLoginError = createSelector(selectLogin, loginReducer.getError);
-export const selectLoginPending = createSelector(selectLogin, loginReducer.getPending);
+//  export function AuthReducer(state:State,action:any){
+//      return reducer(state,action);
+//  }
+
+//  export const Authreducer:  ActionReducerMap<State> = {
+//      fromAuth: authReducer,
+//      login: loginReducer
+//  }
+
+export const selectAuth = createFeatureSelector<AuthState>('fromAuth');
+
+export const selectLoggedIn = createSelector(selectAuth, getLoggedIn);
+export const selectLoggedInUser = createSelector(selectAuth, getLoggedInUser);
+export const selectLogin = createFeatureSelector<LoginState>('login');
+export const selectLoginError = createSelector(selectLogin, getError);
+export const selectLoginPending = createSelector(selectLogin, getPending);
