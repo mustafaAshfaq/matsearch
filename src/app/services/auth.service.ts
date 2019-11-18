@@ -9,21 +9,13 @@ interface APIResponse {
 }
 @Injectable()
 export class AuthService {
-    private url: string = ''
-    constructor(private http: HttpClient) {
-        this.url ='https://birotyapp-auth.azurewebsites.net/';
-    }
+    
+    constructor(private http: HttpClient) {}
     public authenticateUser(authenticate: Authenticate)//: Observable<User>
     {
         let body = { email: authenticate.username, password: authenticate.password };//JSON.stringify({ email: authenticate.username, password: authenticate.password });
-        let headers = new HttpHeaders(
-            {
-                'Content-Type':'application/json'
-            }
-        );
-        
-        return this.http.post(this.url + 'users/login/', body,
-            { headers: headers })
+       
+        return this.http.post('users/login/', body)
             .pipe(
             catchError(this.handleError),
             tap(
@@ -46,11 +38,10 @@ export class AuthService {
     }
     public register(authenticate: Authenticate)//: Observable<User>
     {
-        let headers = new HttpHeaders();
-        headers.append('Content-Type', 'application/json');
+       
         let body = { email: authenticate.username, password: authenticate.password, name: authenticate.name };//JSON.stringify({ email: authenticate.username, password: authenticate.password, name: authenticate.name });
         
-        return this.http.post(this.url+'users/register/', body, { headers: headers })
+        return this.http.post('users/register/', body)
            .pipe(
                 catchError(this.handleError),
                 tap(
@@ -86,9 +77,8 @@ export class AuthService {
     }
     public getUsers(uname: string)//: Observable<User[]>
     {
-        let headers = new HttpHeaders();
-        headers.append('Authorization', `bearer ${localStorage.getItem('user')}`);
-        return this.http.get(this.url + 'users/', { headers: headers })
+        
+        return this.http.get('users/')
             .pipe(catchError(this.handleError));
         //.merge
        // .map(res => res.json())
@@ -103,5 +93,12 @@ export class AuthService {
     public logout(): Observable<boolean> {
         localStorage.removeItem('user');
         return of(true);
+    }
+    public getTokenHeaders(){
+        const headers:HttpHeaders= new HttpHeaders({Accept:'*/*'
+        ,'Content-Type':'application/json',});
+        if ((['undefined', null].indexOf(localStorage.getItem('user')) === -1))
+            headers.append("authorization",`Bearer ${localStorage.getItem('user')}`);
+        return headers;
     }
 }

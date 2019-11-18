@@ -2,7 +2,7 @@
 import { Store } from '@ngrx/store';
 import { Observable,Subscription} from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { selectLoginPending, selectLoggedIn, selectLoginError, selectLoggedInUser } from '../../store/reducers/auth';
 import { State } from '../../store/reducers';
 import { Login, Logout, Register } from '../../store/actions/auth/auth.action';
@@ -49,7 +49,6 @@ export class LoginModal implements OnInit,  OnDestroy {
         this.loggeduserSubscription= this.store.select(selectLoggedInUser)
             .subscribe(login => {
                 this.loggedUser = login
-                console.log('login: user' + JSON.stringify(login));
                 if (login)
                     this.close();
             });

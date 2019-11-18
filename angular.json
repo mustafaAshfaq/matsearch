@@ -137,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "matsearch"
+  "defaultProject": "matsearch",
+  "cli": {
+    "defaultCollection": "@nativescript/schematics"
+  }
 }
