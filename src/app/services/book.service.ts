@@ -11,6 +11,7 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
     searchBooks(query: string): Observable<any> {
+      
         return this.http.get(`${this.booksApiUrl}/?q=${query}`).pipe
             (
             retry(3),
@@ -28,10 +29,11 @@ export class BookService {
           //.map((resp) => resp.json());
     }
     private handleError(error: HttpErrorResponse) {
-        if (error.error instanceof ErrorEvent)
-            console.log('error in connection');
-        else
-            console.log(`Server Error ${error.status}, error details:${error.error}`);
+        console.log(error)
+        // if (error.error instanceof ErrorEvent)
+        //     console.log('error in connection');
+        // else
+        //     console.log(`Server Error ${error.status}, error details:${error.error}`);
         return throwError(`Error in fetching data, please try again`);
     }
 }

@@ -20,3 +20,166 @@
 .menu-toggle{
     margin-left: 10px;
 }
+
+
+@import '../app/shared/scss/_selected_theme_variables';
+ 
+ .ns-root{
+  min-height: 100vh;
+  display: block;
+  .main-body {
+    margin-top:5;
+  }
+
+ }
+  .main-body {
+    margin-top: 2;
+    min-height: 100%;
+    display: block;
+  }
+
+
+.issearchopen .main-body {
+  @media screen and(min-width: 320px) and(max-width: 768px) {
+    margin-top: 10;
+  }
+}
+
+
+
+.ngx-input-star-rating__btn svg {
+  position: absolute;
+  top: -12;
+  left: 5;
+}
+
+.ngx-input-star-rating__btn {
+  background-color: transparent;
+  border: 0;
+  position: relative;
+  width: 26;
+  height: 8;
+}
+
+.ngx-input-star-rating__btn svg {
+  position: absolute;
+  top: -12;
+  left: 5;
+}
+
+.ngx-input-star-rating {
+  display: inline-block;
+  --color-star-default: #ddd;
+  --color-star-highlight: #fe9700;
+}
+
+.ngx-input-star-rating {
+  display: inline-block;
+  --color-star-default: #ddd;
+  --color-star-highlight: #fe9700;
+}
+
+.themebtnprimary {
+  background: darken($theme-action-color, 30);
+  &:focus {
+    @include gradient-y(
+      $start-color: $theme-action-color,
+      $end-color: darken($theme-action-color, 40),
+      $start-percent: 0%,
+      $end-percent: 45%
+    );
+  }
+  @include gradient-y(
+    $start-color: $theme-action-color,
+    $end-color: darken($theme-action-color, 40),
+    $start-percent: 0%,
+    $end-percent: 45%
+  );
+  color: $white;
+  border: 1 solid darken($theme-action-color, 55);
+  border-radius: rem-to-dip(0.4rem);
+  padding: rem-to-dip(0.5rem);
+  font-weight: 300;
+  box-shadow: 0 2 4.6 darken($theme-action-color, 25);
+  width: 100%;
+  color: $white;
+  font-family: "Roboto Regular";
+  font-size: rem-to-dip(1.4em);
+  margin: 10 auto;
+  text-transform: capitalize;
+}
+
+.themebtnprimarybasic {
+  &:focus {
+    @include gradient-y(
+      $start-color: $theme-action-color,
+      $end-color: darken($theme-action-color, 40),
+      $start-percent: 0%,
+      $end-percent: 45%
+    );
+  }
+  text-transform: capitalize;
+  color: $white;
+  border: 1 solid darken($theme-action-color, 55);
+  box-shadow: 0 2 4.6 darken($theme-action-color, 25);
+  &:focus {
+    @include gradient-y(
+      $start-color: $theme-action-color,
+      $end-color: darken($theme-action-color, 40),
+      $start-percent: 0%,
+      $end-percent: 45%
+    );
+  }
+  @include gradient-y(
+    $start-color: $theme-action-color,
+    $end-color: darken($theme-action-color, 40),
+    $start-percent: 0%,
+    $end-percent: 45%
+  );
+}
+
+.themebtnprimarysade {
+  @include gradient-y(
+    $start-color: $theme-action-color,
+    $end-color: darken($theme-action-color, 30),
+    $start-percent: 0%,
+    $end-percent: 95%
+  );
+}
+
+.themebtndisable {
+  @include gradient-y(
+    $start-color: $gray-200,
+    $end-color: $gray-600,
+    $start-percent: 0%,
+    $end-percent: 95%
+  );
+  box-shadow: 0 2 4.6 darken($gray-600, 25);
+  border: 1 solid darken($gray-600, 55);
+}
+
+.btn:not(:disabled):not(.disabled):active,
+.btn:not(:disabled):not(.disabled).active {
+  @include gradient-y(
+    $start-color: $theme-action-color,
+    $end-color: darken($theme-action-color, 25),
+    $start-percent: 0%,
+    $end-percent: 80%
+  );
+}
+
+.btn:not(:disabled):not(.disabled):active,
+.btn:not(:disabled):not(.disabled).active {
+  background-image: auto !important;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: $white;
+  background-color: darken($theme-action-color, 55);
+  border-color: darken($theme-action-color, 55);
+}
+
+.page-link {
+  color: $gray-900;
+}

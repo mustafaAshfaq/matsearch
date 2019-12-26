@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  apiEndPoint:'https://birotyapp-auth.azurewebsites.net/'
+  apiEndPoint:'https://birotyapp-auth.azurewebsites.net/',
+  headerConfig:{
+    brand:{
+      logo:'~/assets/card.jpg',
+      name:'Teech',
+      width:20,
+      height:40
+    }
+  }
 };
 
 /*

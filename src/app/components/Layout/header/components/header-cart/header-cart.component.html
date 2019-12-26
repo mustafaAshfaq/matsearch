@@ -1,0 +1,13 @@
+<AbsoluteLayout
+  class="header-cart pl-2 border-left btn-small"
+  [nsRouterLink]="['/checkout/cart']"
+  (click)="getCurrentOrder()"
+>
+    <Label  left="10" top="8"  text="&#xf07a;" style="font-size: 20;"  
+    class="fas"></Label>
+    <Label  left="32" top="1" margin="1" width="20" 
+      style="text-align: center; background:#f2903d;
+       border-radius:10,10,10,10;"
+       text="0"></Label>
+
+ </AbsoluteLayout>

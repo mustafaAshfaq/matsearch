@@ -1,2 +1,30 @@
-<!-- https://docs.nativescript.org/angular/core-concepts/angular-navigation.html#page-router-outlet -->
-<page-router-outlet></page-router-outlet>
+<!-- https://docs.nativescript.org/angular/core-concepts/angular-navigation.html#page-router-outlet
+
+<StackLayout class="selected-theme">
+        <ngb-header></ngb-header>
+        <ScrollView class="main-body">
+                <GridLayout rows="auto",cols="auto">
+                        <StackLayout row="0" col="0">
+                                <page-router-outlet></page-router-outlet> 
+                        </StackLayout>
+                </GridLayout>
+        </ScrollView>
+</StackLayout>
+-->
+<GridLayout class="selected-theme">
+        <ScrollView class="page" iosOverflowSafeArea="false"> 
+                <FlexboxLayout flexDirection="column" justifyContent="space-between" alignItems="flex-start">
+                        <ngb-header></ngb-header> 
+                        <page-router-outlet></page-router-outlet>
+                        <GridLayout columns= "auto" style="background: greenyellow;">
+                                <Label text="footer"></Label>
+                        </GridLayout>
+                 </FlexboxLayout>
+        </ScrollView> 
+</GridLayout>
+
+
+
+        
+        
+

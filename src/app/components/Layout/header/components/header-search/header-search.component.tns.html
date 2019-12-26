@@ -1,0 +1,18 @@
+ <AbsoluteLayout>
+     <StackLayout class="searchinput">
+       <FlexboxLayout flexWrap="wrap"  alignItems="stretch" class="input-group">
+           <RadAutoCompleteTextView class="searchBar" hint="search" completionMode="Contains"  #searchBar [items]="dataItems" suggestMode="Suggest" displayMode="Plain">
+                <SuggestionView tkAutoCompleteSuggestionView suggestionViewHeight="100">
+                    <ng-template tkSuggestionItemTemplate let-item="item" >
+                        <GridLayout columns="auto">
+                            <Label col="0" [text]="item" class="label"></Label>
+                        </GridLayout>
+                    </ng-template>
+                </SuggestionView>
+            </RadAutoCompleteTextView>
+        </FlexboxLayout>
+    </StackLayout>
+</AbsoluteLayout>
+
+
+

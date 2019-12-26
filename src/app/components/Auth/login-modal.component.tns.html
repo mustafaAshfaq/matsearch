@@ -1,0 +1,82 @@
+<StackLayout class="container">
+    <FlexboxLayout flexDirection="row" class="loginwindow">
+      <Label class="h2" text="Sign In or Register"></Label>
+      <FlexboxLayout flexWrap="wrap" class="row" style="margin-right:-15;margin-left:-15">
+        <FlexboxLayout style="padding-right: 15;padding-left: 15;">
+          <FlexboxLayout  class="text-center row login-container" style="margin-right:-15;margin-left:-15">
+            <FlexboxLayout id="content" style="padding-right: 15;padding-left: 15; width:100%">
+              <FlexboxLayout class="col-centered">
+                <StackLayout class="panel panel-default">
+                  <StackLayout id="existing-customer"class="panel-body">
+                    <StackLayout class="nt-form login-login-form">
+                      <StackLayout class="login-input-container">
+                        <StackLayout class="nt-input login-input-item">
+                           
+                          <TextField
+                            class="login-user-input-email login-user-input"
+                            hint="Your user name"
+                            [(ngModel)]="username" 
+                            #uname #unameModel="ngModel"
+                            autocomplete="off"
+                          ></TextField>
+                          <StackLayout
+                            *ngIf="!unameModel.valid && fieldtouched(uname.className)"
+                          >
+                          
+                            <Label class="body login-error-message text-danger" text="'Please enter a valid user id'"></Label>
+                          </StackLayout>
+                        </StackLayout>
+                        <StackLayout class="nt-input login-input-item">
+                          <TextField
+                            class=" login-user-input-password login-user-input"
+                            hint="Enter Password"
+                            [(ngModel)]="password"
+                            #password #pwdModel="ngModel"
+                            autocomplete="off" keyboardType="email"
+                          ></TextField>
+                          <StackLayout *ngIf="!pwdModel.valid && fieldtouched(password.className)">
+                            <FormattedString><Span class="login-error-icon text-danger">!</Span></FormattedString>
+                            <Label class="body login-error-message text-danger" text='Password must be at least 8 characters'></Label>
+                          </StackLayout>
+                        </StackLayout>
+                      </StackLayout>
+                      <StackLayout class="login-login-button-container">
+                        <Button (tap)="onSubmit" class="btn login-login-button">
+                          Log in
+                        </Button>
+                      </StackLayout>
+                        <FlexboxLayout
+                            *ngIf="loginError$ | async"
+                          >
+                           <FormattedString><Span class="login-error-icon text-danger">!</Span></FormattedString>
+                            <Label  class=" body login-error-message text-danger">
+                              {{
+                                loginError$ | async
+                              }}
+                            </p>
+                        </FlexboxLayout>
+                      
+                    </StackLayout>
+                   
+                  </StackLayout>
+                </StackLayout>
+              </FlexboxLayout>
+            </FlexboxLayout>
+          </FlexboxLayout>
+        </FlexboxLayout>
+        <FlexboxLayout alignItems="center" class="createacc">
+          <StackLayout class="pull-right login-right-links">
+            <Label class="h2 text-default">For New User</Label>
+            <Label class="body">
+              Creating an account is fast, easy, and free. You'll be able to
+              manage application and more
+            </Label>
+            <GridLayout columns="auto" class="body">
+              <Button class="btn login-login-button" [nsRouterLink]="['/auth']">Create Account</Button>
+            </GridLayout>
+          </StackLayout>
+        </FlexboxLayout>
+      </FlexboxLayout>
+    </FlexboxLayout>
+</StackLayout>
+  

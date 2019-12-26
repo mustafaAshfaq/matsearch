@@ -97,8 +97,8 @@ export class AuthService {
     public getTokenHeaders(){
         const headers:HttpHeaders= new HttpHeaders({Accept:'*/*'
         ,'Content-Type':'application/json',});
-        if ((['undefined', null].indexOf(localStorage.getItem('user')) === -1))
-            headers.append("authorization",`Bearer ${localStorage.getItem('user')}`);
+        // if ((['undefined', null].indexOf(localStorage.getItem('user')) === -1))
+        //     headers.append("authorization",`Bearer ${localStorage.getItem('user')}`);
         return headers;
     }
 }

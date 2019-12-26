@@ -1,0 +1,67 @@
+<!--[ngClass]="{'main-nav-trigger-open':isModalShown}"-->
+<StackLayout class="header issearchopen">
+    <FlexboxLayout flexWrap="wrap" flexDirection="row" alignItems="center" justifyContent="space-between"  id="main" class="navbar">
+        <FlexboxLayout  flexWrap="wrap" flexDirection="row" alignItems="center" justifyContent="space-between" class="container">
+          <AbsoluteLayout   class="main-nav-trigger"  (tap)="showModal()">
+          
+            <AbsoluteLayout class="main-nav-trigger-before" [ngClass]="{'main-nav-trigger-open-before':isModalShown}"> </AbsoluteLayout>
+              <Label></Label> 
+            <AbsoluteLayout class="main-nav-trigger-after" [ngClass]="{'main-nav-trigger-open-after':isModalShown}"></AbsoluteLayout>
+             
+          </AbsoluteLayout>
+          <FlexboxLayout  flexWrap="wrap" class="resheader m-0 row hidden-md hidden-lg" alignItems="center">
+            <FlexboxLayout flexDirection="row" flexGrow="4" >
+                <FlexboxLayout class="small-logo navbar-brand">
+                  <Image col="0" row="0" class="d-inline-block align-top" [width]="headerConfig.brand.width" 
+                  [height]="headerConfig.brand.height"
+                  [src]="headerConfig.brand.logo"></Image>
+                  <Label ></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
+            <FlexboxLayout width="52%" height="25" flexGrow=".2"  justifyContent="flex-start" alignItems="center" class="search" >
+              <app-header-search></app-header-search>
+            </FlexboxLayout>
+            <FlexboxLayout flexGrow=".2"  justifyContent="flex-end" alignItems="center" class="profile"  >
+              <header-profile class="pr-2" [isAuthenticated]="logged$|async"></header-profile>
+            </FlexboxLayout>
+            <FlexboxLayout flexGrow=".5" justifyContent="flex-end" alignItems="center" class="cart" >
+              <header-cart class="pl-2 border-left" [totalCartItems]="0"></header-cart>
+            </FlexboxLayout>
+          </FlexboxLayout>
+         
+        </FlexboxLayout>
+    </FlexboxLayout>
+</StackLayout>
+<RadSideDrawer [drawerTransition]="sideDrawerTransition">
+  <StackLayout tkDrawerContent class="sidedrawer-left">
+      
+          <StackLayout class="sidedrawer-content">
+              <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.active]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
+                  <Label col="0" text="&#xf015;" class="sidedrawer-list-item-icon fas"></Label>
+                  <Label col="1" text="Home" class="sidedrawer-list-item-text"></Label>
+              </GridLayout>
+              <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.active]="isComponentSelected('/browse')" (tap)="onNavItemTap('/browse')">
+                  <Label col="0" text="&#xf1ea;" class="sidedrawer-list-item-icon far"></Label>
+                  <Label col="1" text="Browse" class="sidedrawer-list-item-text"></Label>
+              </GridLayout>
+              <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.active]="isComponentSelected('/search')" (tap)="onNavItemTap('/search')">
+                  <Label col="0" text="&#xf002;" class="sidedrawer-list-item-icon fas"></Label>
+                  <Label col="1" text="Search" class="sidedrawer-list-item-text"></Label>
+              </GridLayout>
+              <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.active]="isComponentSelected('/featured')" (tap)="onNavItemTap('/featured')">
+                  <Label col="0" text="&#xf005;" class="sidedrawer-list-item-icon fas"></Label>
+                  <Label col="1" text="Featured" class="sidedrawer-list-item-text"></Label>
+              </GridLayout>
+              <StackLayout class="hr-light"></StackLayout>
+              <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.-selected]="isComponentSelected('/featured')" (tap)="onNavItemTap('/settings')">
+                  <Label col="0" text="&#xf013;" class="sidedrawer-list-item-icon fas"></Label>
+                  <Label col="1" text="Settings" class="sidedrawer-list-item-text"></Label>
+              </GridLayout>
+          </StackLayout>
+       
+  </StackLayout>
+  <StackLayout tkMainContent class="sidedrawer-main"></StackLayout>
+</RadSideDrawer>
+
+
+ 

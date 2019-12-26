@@ -1,1 +1,18 @@
 /* Add mobile styles for the component here.  */
+.customize {    
+    color: white;
+    font-size: 14;
+    height: 73;
+    margin-top: 30;  
+    margin-bottom: 30;  
+    font-weight: 600;
+}
+
+.customize image {
+    width: 141;
+    margin-right: 38;
+}
+
+.customize .chev-right  {
+    font-size: 25;
+}

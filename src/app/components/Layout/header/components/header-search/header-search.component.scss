@@ -1,0 +1,80 @@
+@import '../../../../../shared/scss/selected_theme_variables';
+
+
+.desktop-query {
+  line-height: 0;
+  margin: 4 10 10 0;
+  a.desktop-submit {
+    box-sizing: content-box;
+    display: inline-block;
+    height: 28;
+    width: 5%;
+    text-align: center;
+    padding: 8 10 2;
+    background: $gray-200;
+    border: 1 solid $theme-main-color;
+    border-left: none;
+    border-radius: 0 4 4 0;
+    .desktop-iconSearch {
+      display: inline-block;
+    }
+    .sprites-search {
+      width: 21;
+      height: 21; // background-position: -284px -160px;
+    }
+    .web-sprite {
+      background: url(/assets/default/search-sprite.png);
+      background-position: -209 -148; // background-size: 1404px 105px;
+      display: inline-block;
+    }
+  }
+}
+
+.themecolor {
+  color: $theme-main-color !important;
+}
+
+.desktop-query-updated {
+  background-color: $white;
+}
+
+
+
+.searchinput {
+  left: 0;
+  bottom: -20;
+
+  width: 100%;
+  border: 1 solid $theme-main-color;
+ 
+}
+.input-group{
+  width:100%;
+  position: relative;
+}
+
+
+RadAutoCompleteTextView.searchBar:focus{
+  border-color: transparent;
+  box-shadow: none;
+  border: none;
+  
+}
+
+RadAutoCompleteTextView.searchBar {
+  width: 90%;
+  border: 1 solid $theme-main-sub-color1;
+  color: black;
+}
+
+.dropdown-menu {
+  .dropdown-item {
+    transition: background-color 700ms;
+    padding: 1.15rem 0.7rem;
+    &.active {
+      background-color: darken($theme-action-color, 35);
+      box-shadow: inset 0 0 5 0 darken($theme-action-color, 25);
+      color: black;
+    }
+  }
+}

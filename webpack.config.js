@@ -281,9 +281,10 @@ module.exports = env => {
             new CleanWebpackPlugin(itemsToClean, { verbose: !!verbose }),
             // Copy assets to out dir. Add your own globs as needed.
             new CopyWebpackPlugin([
-                { from: { glob: "fonts/**" } },
-                { from: { glob: "**/*.jpg" } },
-                { from: { glob: "**/*.png" } },
+                { from: { glob: "fonts/**"} },
+                { from: { glob: "**/*.jpg",to:'assets/',flatten:true  } },
+                { from: { glob: "**/*.png" ,to:'assets/',flatten:true } },
+                { from: { glob: "**/*.svg" ,to:'assets/',flatten:true } }
             ], { ignore: [`${relative(appPath, appResourcesFullPath)}/**`] }),
             new nsWebpack.GenerateNativeScriptEntryPointsPlugin("bundle"),
             // For instructions on how to set up workers with webpack
